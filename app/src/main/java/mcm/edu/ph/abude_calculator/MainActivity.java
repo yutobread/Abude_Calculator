@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView txtAnswer;
 
 
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,34 +51,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         double variable1, variable2, answer;
 
-        variable1 = Double.parseDouble(txtVariable1.toString());
-        variable2 = Double.parseDouble(txtVariable2.toString());
+        variable1 = Double.parseDouble(String.valueOf(txtVariable1.getText()));
+        variable2 = Double.parseDouble(String.valueOf(txtVariable2.getText()));
 
 
 
         switch (v.getId()) {
 
             case R.id.btnAdd:
-                answer = variable1 + variable2;
-                txtAnswer.setText(String.valueOf(answer));
+                txtAnswer.setText(String.valueOf(add(variable1, variable2)));
                 break;
             case R.id.btnSubtract:
-                answer = variable1 - variable2;
-                txtAnswer.setText(String.valueOf(answer));
+                txtAnswer.setText(String.valueOf(subtract(variable1, variable2)));
                 break;
             case R.id.btnDivide:
-                answer = variable1 / variable2;
-                txtAnswer.setText(String.valueOf(answer));
+                txtAnswer.setText(String.valueOf(divide(variable1, variable2)));
                 break;
             case R.id.btnMultiply:
-                answer = variable1 * variable2;
-                txtAnswer.setText(String.valueOf(answer));
+                txtAnswer.setText(String.valueOf(multiply(variable1, variable2)));
                 break;
             case R.id.btnModulo:
-                answer = variable1 % variable2;
-                txtAnswer.setText(String.valueOf(answer));
+                txtAnswer.setText(String.valueOf(modulo(variable1, variable2)));
                 break;
         }
     }
+
+    double add(double variable1, double variable2){ return variable1 + variable2; }
+    double subtract(double variable1, double variable2){ return variable1 - variable2;}
+    double divide(double variable1, double variable2){ return variable1 / variable2;}
+    double multiply(double variable1, double variable2){ return variable1 * variable2;}
+    double modulo(double variable1, double variable2){ return variable1 % variable2;}
+
 
 }
